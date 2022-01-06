@@ -32,11 +32,11 @@ Here it's a good ide to reboot the system
 
 ### Adding Foreman repositories
 
->sudo apt -y install gpg ca-certificates
->echo "deb http://deb.theforeman.org/ focal 3.0" | sudo tee /etc/apt/sources.list.d/foreman.list
->echo "deb http://deb.theforeman.org/ plugins 3.0" | sudo tee -a /etc/apt/sources.list.d/foreman.list
->wget -q https://deb.theforeman.org/pubkey.gpg -O- | sudo apt-key add -
->sudo apt-get update
+>sudo apt -y install gpg ca-certificates \
+>echo "deb http://deb.theforeman.org/ focal 3.0" | sudo tee /etc/apt/sources.list.d/foreman.list \
+>echo "deb http://deb.theforeman.org/ plugins 3.0" | sudo tee -a /etc/apt/sources.list.d/foreman.list \
+>wget -q https://deb.theforeman.org/pubkey.gpg -O- | sudo apt-key add - \
+>sudo apt-get update \
 >sudo apt-get install foreman-installer
 
 # Provisioning a bare metal host.
