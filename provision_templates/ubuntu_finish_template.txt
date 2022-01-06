@@ -1,6 +1,6 @@
 <%#
 kind: finish
-name: peterb_ubuntu_finish
+name: demo_ubuntu_finish
 model: ProvisioningTemplate
 oses:
 - Ubuntu
@@ -19,11 +19,11 @@ EOF
 /bin/echo <%= @host.shortname %> > /etc/hostname
 /bin/hostname <%= @host.shortname %>
 
-# enable passwordless sudo for Ansible user
-cat <<EOF > /etc/sudoers.d/99_ubuntu_r0ck
-r0ck ALL=(ALL) NOPASSWD: ALL
+# enable passwordless sudo for Demo user
+cat <<EOF > /etc/sudoers.d/99_ubuntu_demo
+demo ALL=(ALL) NOPASSWD: ALL
 EOF
-chmod 440 /etc/sudoers.d/99_ubuntu_r0ck
+chmod 440 /etc/sudoers.d/99_ubuntu_demo
 
 # configure NTP
 sed -i -re 's/^#?NTP=/NTP=<%= host_param('ntp-server') %>/' /etc/systemd/timesyncd.conf
