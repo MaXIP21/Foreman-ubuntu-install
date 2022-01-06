@@ -54,7 +54,13 @@ So let's create a command line (or snply copy from the run_foreman_installer.txt
 >nameservers 192.168.1.140 and 8.8.8.8 \
 >gateway 192.168.1.1 (this is my router)
 
-### In case you make any changes please check the __BOLD__ values
+### In case you make any changes please check the BOLD values
+
+>>enp0s3 : this is the primary ethernet interface name in my foreman host \
+>>foreman.example.com : this is the chosen FQDN to my environment \
+>>192.168.1.150 192.168.1.200 : the ip addresses of the installed client will be assigned from this range \
+>>192.168.1.140, 8.8.8.8 : we should define the foreman DNS server as primary DNS on our network to resolv the example.com domain \
+>>192.168.1.140 : this is the IP of the current foreman server\
 
 sudo foreman-installer --foreman-proxy-dns true \
 --foreman-proxy-dns-managed true \
