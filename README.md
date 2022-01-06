@@ -1,4 +1,4 @@
-# foreman-ubuntu
+# How to install Foreman 3.0 to Ubuntu 20.04 and provision bare metal servers with it 
 
 # Creating password for provisioning template
 You can use mkpasswd to create hashed password for your users
