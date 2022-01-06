@@ -1,6 +1,6 @@
 <%#
 kind: provision
-name: peterb_ubuntu_provisioning
+name: demo_ubuntu_provisioning
 model: ProvisioningTemplate
 oses:
 - Debian
@@ -40,9 +40,9 @@ d-i clock-setup/ntp-server string <%= host_param('ntp-server') %>
 d-i passwd/root-login boolean false
 user-setup-udeb passwd/root-login boolean false
 
-# Create user for Ansible
-d-i passwd/user-fullname string Ansible
-d-i passwd/username string r0ck
+# Create user for Demo
+d-i passwd/user-fullname string Demo
+d-i passwd/username string Demo
 d-i passwd/user-uid string <%= host_param('os-uid') %>
 d-i passwd/user-gid string <%= host_param('os-gid') %>
 d-i passwd/user-password-crypted password $6$UlRmsEAmvvqO7zqT$aC1Bza3vtl.cO7wDJ7U4mRrHv/mEvYL5GvcKCvATeKO32q4FwicqlABcWKXGMyitWmyfc59pbz7r7FZVof5aL1
