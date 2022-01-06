@@ -1,0 +1,14 @@
+<%#
+kind: PXELinux
+name: peterb_ubuntu_pxelinux
+model: ProvisioningTemplate
+oses:
+- Debian
+- Ubuntu
+%>
+DEFAULT linux
+
+LABEL linux
+    KERNEL <%= @kernel %>
+    APPEND initrd=<%= @initrd %> url=<%= foreman_url('provision') %> ramdisk_size=10800 root=/dev/rd/0 rw auto=true priority=critical locale=en_US console-setup/ask_detect=false console-setup/layout=USA console-setup/variant=USA keyboard-configuration/layoutcode=us ipv6.disable=1 netcfg/choose_interface=<%= @host.primary_interface.identifier %> netcfg/get_hostname=<%= @host.shortname %> netcfg/get_domain=<%= @host.domain %> netcfg/dhcp_timeout=120
+    IPAPPEND 2
