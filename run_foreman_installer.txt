@@ -1,0 +1,20 @@
+# Please change the values below according to your local network settings
+# Here the settings are Foreman server IP 192.168.1.140
+# nameservers 192.168.1.140 and 8.8.8.8
+# gateway 192.168.1.1 (this is my router)
+
+
+foreman-installer --foreman-proxy-dns true \
+--foreman-proxy-dns-managed true \
+--foreman-proxy-dns-interface enp0s3 \
+--foreman-proxy-dns-zone foreman.example.com \
+--foreman-proxy-dns-reverse 2.0.192.in-addr.arpa \
+--foreman-proxy-dhcp true \
+--foreman-proxy-dhcp-managed true \
+--foreman-proxy-dhcp-interface enp0s3 \
+--foreman-proxy-dhcp-range "192.168.1.100 192.168.1.150" \
+--foreman-proxy-dhcp-gateway 192.168.1.1 \
+--foreman-proxy-dhcp-nameservers "192.168.1.140, 8.8.8.8" \
+--foreman-proxy-tftp true \
+--foreman-proxy-tftp-managed true \
+--foreman-proxy-tftp-servername 192.168.1.140
