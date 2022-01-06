@@ -42,7 +42,7 @@ user-setup-udeb passwd/root-login boolean false
 
 # Create user for Demo
 d-i passwd/user-fullname string Demo
-d-i passwd/username string Demo
+d-i passwd/username string demo
 d-i passwd/user-uid string <%= host_param('os-uid') %>
 d-i passwd/user-gid string <%= host_param('os-gid') %>
 d-i passwd/user-password-crypted password $6$UlRmsEAmvvqO7zqT$aC1Bza3vtl.cO7wDJ7U4mRrHv/mEvYL5GvcKCvATeKO32q4FwicqlABcWKXGMyitWmyfc59pbz7r7FZVof5aL1
