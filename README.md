@@ -82,6 +82,8 @@ Once this is finished the installation is complete don't forget to note down the
 However if you forgot you can find it in the file /etc/foreman-installer/scenarios.d/foreman-answers.yaml 
 >sudo cat /etc/foreman-installer/scenarios.d/foreman-answers.yaml | grep admin_pass
 
+At this point it's also worth to disable your other DHCP servers to avoid conflicts on your network. 
+
 # Provisioning a bare metal host.
 # Creating password for provisioning template
 You can use mkpasswd to create hashed password for your users
