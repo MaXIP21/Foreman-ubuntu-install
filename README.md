@@ -11,8 +11,14 @@ sudo apt-get upgrade \
 sudo apt-get install ca-certificates wget \
 
 ## Setting up the FQDN in our example it will be foreman.example.com
-sudo hostnamectl set-hostname foreman.example.com \
-echo "192.168.1.140 foreman.example.com" | sudo tee -a /etc/hosts
+>sudo hostnamectl set-hostname foreman.example.com \
+>echo "192.168.1.140 foreman.example.com" | sudo tee -a /etc/hosts \
+
+Then verify the hostname using the command
+
+> ping -c 2 $(hostname -f)
+
+
 
 # Provisioning a bare metal host.
 # Creating password for provisioning template
