@@ -78,6 +78,10 @@ So let's create a command line (or snply copy from the run_foreman_installer.txt
 >--foreman-proxy-tftp-managed true \
 >--foreman-proxy-tftp-servername __192.168.1.140__
 
+Once this is finished the installation is complete don't forget to note down the password provided by the installer. \
+However if you forgot you can find it in the file /etc/foreman-installer/scenarios.d/foreman-answers.yaml \
+>sudo cat /etc/foreman-installer/scenarios.d/foreman-answers.yaml | grep admin_pass
+
 # Provisioning a bare metal host.
 # Creating password for provisioning template
 You can use mkpasswd to create hashed password for your users
