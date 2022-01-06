@@ -23,6 +23,19 @@ Here it's a good ide to reboot the system
 >sudo apt update && sudo apt upgrade \
 >sudo systemctl reboot
 
+# Installing Foreman
+
+### installing Puppet6 
+
+>wget https://apt.puppet.com/puppet6-release-focal.deb \
+>sudo apt install ./puppet6-release-focal.deb
+
+### Adding Foreman repositories
+>sudo apt -y install gpg ca-certificates \
+>echo "deb http://deb.theforeman.org/ bionic 2.0" | sudo tee /etc/apt/sources.list.d/foreman.list \
+>echo "deb http://deb.theforeman.org/ plugins 2.0" | sudo tee -a /etc/apt/sources.list.d/foreman.list \
+>wget -q https://deb.theforeman.org/pubkey.gpg -O- | sudo apt-key add -
+
 
 # Provisioning a bare metal host.
 # Creating password for provisioning template
