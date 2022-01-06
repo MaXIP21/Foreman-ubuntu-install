@@ -23,9 +23,9 @@ Here it's a good ide to reboot the system
 >sudo apt update && sudo apt upgrade \
 >sudo systemctl reboot
 
-# Installing Foreman
+## Installing Foreman
 
-### installing Puppet6 
+### Installing Puppet6 
 
 >wget https://apt.puppet.com/puppet6-release-focal.deb \
 >sudo apt install ./puppet6-release-focal.deb
