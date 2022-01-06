@@ -1,6 +1,6 @@
 <%#
 kind: PXELinux
-name: peterb_ubuntu_pxelinux
+name: demo_ubuntu_pxelinux
 model: ProvisioningTemplate
 oses:
 - Debian
