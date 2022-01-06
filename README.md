@@ -10,7 +10,8 @@ Once it's compleated let's start the installation
 >sudo apt-get upgrade \
 >sudo apt-get install ca-certificates wget
 
-## Setting up the FQDN in our example it will be foreman.example.com
+## Setting up the FQDN 
+To make it easy in our example it will be foreman.example.com, you can freely choose any other FQDN just please use the same domain in all the configurations. 
 >sudo hostnamectl set-hostname foreman.example.com \
 >echo "192.168.1.140 foreman.example.com" | sudo tee -a /etc/hosts \
 
