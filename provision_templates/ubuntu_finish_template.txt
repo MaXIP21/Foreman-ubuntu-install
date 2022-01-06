@@ -1,0 +1,36 @@
+<%#
+kind: finish
+name: peterb_ubuntu_finish
+model: ProvisioningTemplate
+oses:
+- Ubuntu
+%>
+# configure /etc/hosts
+cat <<EOF > /etc/hosts
+127.0.0.1 localhost
+<%= @host.ip %> <%= @host.shortname %>.<%= @host.domain %> <%= @host.shortname %>
+
+::1 localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+EOF
+
+# set hostname
+/bin/echo <%= @host.shortname %> > /etc/hostname
+/bin/hostname <%= @host.shortname %>
+
+# enable passwordless sudo for Ansible user
+cat <<EOF > /etc/sudoers.d/99_ubuntu_r0ck
+r0ck ALL=(ALL) NOPASSWD: ALL
+EOF
+chmod 440 /etc/sudoers.d/99_ubuntu_r0ck
+
+# configure NTP
+sed -i -re 's/^#?NTP=/NTP=<%= host_param('ntp-server') %>/' /etc/systemd/timesyncd.conf
+
+# update APT cache
+apt-get update
+
+<%# snippet 'preseed_networking_setup' %>
+<%# snippet 'efibootmgr_netboot' %>
+<%= snippet 'built' %>
