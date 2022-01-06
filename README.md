@@ -37,7 +37,18 @@ Here it's a good ide to reboot the system
 >echo "deb http://deb.theforeman.org/ plugins 3.0" | sudo tee -a /etc/apt/sources.list.d/foreman.list \
 >wget -q https://deb.theforeman.org/pubkey.gpg -O- | sudo apt-key add - \
 >sudo apt-get update \
->sudo apt-get install foreman-installer
+>sudo apt-get install foreman-installer \
+>sudo apt-get update
+
+### Running the installer with the correct configuration 
+If you just run the foreman insaller you need lots of extra steps to make it complete for that reaseon \
+It's recommended to use extra parameters. First summarize which services do we need ofr our local environment: \
+- DNS server to translate our local dns to IP address (foreman.example.com) \
+- DHCP service to provide correct dhcp configuration for the TFTP boot \
+- TFTP service for booting the installation images from network. 
+
+So let's create a command line 
+
 
 # Provisioning a bare metal host.
 # Creating password for provisioning template
