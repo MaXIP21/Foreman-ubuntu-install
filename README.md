@@ -56,7 +56,7 @@ So let's create a command line (or snply copy from the run_foreman_installer.txt
 
 ### In case you make any changes please check the __BOLD__ values
 
-foreman-installer --foreman-proxy-dns true \
+sudo foreman-installer --foreman-proxy-dns true \
 --foreman-proxy-dns-managed true \
 --foreman-proxy-dns-interface __enp0s3__ \
 --foreman-proxy-dns-zone __foreman.example.com__ \
