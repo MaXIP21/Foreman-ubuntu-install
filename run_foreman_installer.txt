@@ -12,7 +12,7 @@ foreman-installer --foreman-proxy-dns true \
 --foreman-proxy-dhcp true \
 --foreman-proxy-dhcp-managed true \
 --foreman-proxy-dhcp-interface enp0s3 \
---foreman-proxy-dhcp-range "192.168.1.100 192.168.1.150" \
+--foreman-proxy-dhcp-range "192.168.1.150 192.168.1.200" \
 --foreman-proxy-dhcp-gateway 192.168.1.1 \
 --foreman-proxy-dhcp-nameservers "192.168.1.140, 8.8.8.8" \
 --foreman-proxy-tftp true \
