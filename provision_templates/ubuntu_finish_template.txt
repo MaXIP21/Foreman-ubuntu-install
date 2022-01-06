@@ -15,6 +15,14 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 EOF
 
+# deploy demo user SSH key
+mkdir -p /home/demo/.ssh
+chmod 700 /home/demo/.ssh
+cat <<EOF > /home/demo/.ssh/authorized_keys
+<%= host_param('demo-ssh-key') %>
+EOF
+chown -R ansible: /home/ansible/.ssh
+
 # set hostname
 /bin/echo <%= @host.shortname %> > /etc/hostname
 /bin/hostname <%= @host.shortname %>
