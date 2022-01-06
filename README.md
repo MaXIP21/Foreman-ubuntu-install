@@ -31,6 +31,7 @@ Here it's a good ide to reboot the system
 >sudo apt install ./puppet6-release-focal.deb
 
 ### Adding Foreman repositories
+
 >sudo apt -y install gpg ca-certificates
 >echo "deb http://deb.theforeman.org/ focal 3.0" | sudo tee /etc/apt/sources.list.d/foreman.list
 >echo "deb http://deb.theforeman.org/ plugins 3.0" | sudo tee -a /etc/apt/sources.list.d/foreman.list
