@@ -18,6 +18,10 @@ Then verify the hostname using the command
 
 > ping -c 2 $(hostname -f)
 
+Here it's a good ide to reboot the system 
+
+>sudo apt update && sudo apt upgrade \
+>sudo systemctl reboot
 
 
 # Provisioning a bare metal host.
