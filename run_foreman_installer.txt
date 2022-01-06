@@ -4,7 +4,7 @@
 # gateway 192.168.1.1 (this is my router)
 
 
-foreman-installer --foreman-proxy-dns true \
+sudo foreman-installer --foreman-proxy-dns true \
 --foreman-proxy-dns-managed true \
 --foreman-proxy-dns-interface enp0s3 \
 --foreman-proxy-dns-zone foreman.example.com \
