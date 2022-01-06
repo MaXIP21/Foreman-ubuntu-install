@@ -8,7 +8,7 @@ Once it's compleated let's start the installation
 # Foreman installation
 >sudo apt-get update \
 >sudo apt-get upgrade \
->sudo apt-get install ca-certificates wget \
+>sudo apt-get install ca-certificates wget
 
 ## Setting up the FQDN in our example it will be foreman.example.com
 >sudo hostnamectl set-hostname foreman.example.com \
