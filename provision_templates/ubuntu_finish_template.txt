@@ -1,4 +1,4 @@
-<%#
+o<%#
 kind: finish
 name: demo_ubuntu_finish
 model: ProvisioningTemplate
@@ -21,7 +21,7 @@ chmod 700 /home/demo/.ssh
 cat <<EOF > /home/demo/.ssh/authorized_keys
 <%= host_param('demo-ssh-key') %>
 EOF
-chown -R ansible: /home/ansible/.ssh
+chown -R ansible: /home/demo/.ssh
 
 # set hostname
 /bin/echo <%= @host.shortname %> > /etc/hostname
