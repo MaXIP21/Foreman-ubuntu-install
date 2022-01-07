@@ -40,7 +40,7 @@ d-i clock-setup/ntp-server string <%= host_param('ntp-server') %>
 d-i passwd/root-login boolean false
 user-setup-udeb passwd/root-login boolean false
 
-# Create ansible for Demo
+# Create User for Ansible
 d-i passwd/user-fullname string Ansible
 d-i passwd/username string ansible
 d-i passwd/user-uid string <%= host_param('ansible-uid') %>
