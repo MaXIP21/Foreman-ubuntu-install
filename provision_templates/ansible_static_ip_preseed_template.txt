@@ -17,20 +17,11 @@ d-i keyboard-configuration/modelcode string pc105
 d-i console-setup/ask_detect boolean false
 
 # Network configuration
-#d-i netcfg/wireless_wep string
+d-i netcfg/wireless_wep string
 
-#d-i netcfg/link_wait_timeout string 60
-#d-i netcfg/dhcp_timeout string 60
-#d-i netcfg/dhcpv6_timeout string 60
-d-i netcfg/enable boolean true
-d-i netcfg/choose_interface select auto
-d-i netcfg/disable_dhcp boolean true
-d-i netcfg/get_ipaddress string <%= @host.ip %>
-d-i netcfg/get_netmask string <%= @host.subnet.mask %>
-d-i netcfg/get_nameservers string <%= @host.subnet.dns_servers.join(' ') %>
-d-i netcfg/get_gateway string <%= @host.subnet.gateway %>
-d-i netcfg/confirm_static boolean true
-
+d-i netcfg/link_wait_timeout string 60
+d-i netcfg/dhcp_timeout string 60
+d-i netcfg/dhcpv6_timeout string 60
 
 d-i hw-detect/load_firmware boolean true
 
