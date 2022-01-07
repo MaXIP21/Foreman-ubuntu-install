@@ -1,0 +1,67 @@
+<%#
+kind: finish
+name: demo_ubuntu_finish
+model: ProvisioningTemplate
+oses:
+- Ubuntu
+%>
+# configure /etc/hosts
+cat <<EOF > /etc/hosts
+127.0.0.1 localhost
+<%= @host.ip %> <%= @host.shortname %>.<%= @host.domain %> <%= @host.shortname %>
+
+::1 localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+EOF
+
+# deploy ansible user SSH key
+mkdir -p /home/ansible/.ssh
+chmod 700 /home/ansible/.ssh
+cat <<EOF > /home/ansible/.ssh/authorized_keys
+<%= host_param('ansible-ssh-key') %>
+EOF
+chown -R ansible: /home/ansible/.ssh
+
+# deploy ansible user Private SSH key
+cat <<EOF > /home/ansible/.ssh/id_rsa
+<%= host_param('ansible-priv-ssh-key') %>
+EOF
+chmod 700 /home/ansible/.ssh/id_rsa
+chown -R ansible: /home/ansible/.ssh
+
+# set hostname
+/bin/echo <%= @host.shortname %> > /etc/hostname
+/bin/hostname <%= @host.shortname %>
+
+# enable passwordless sudo for Demo user
+cat <<EOF > /etc/sudoers.d/99_ubuntu_demo
+ansible ALL=(ALL) NOPASSWD: ALL
+EOF
+chmod 440 /etc/sudoers.d/99_ubuntu_demo
+
+cat << EOF >> /etc/netplan/01-netcfg.yaml
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    enp0s3:
+      addresses:
+      - <%= @host.ip %>/24
+      gateway4: <%= @host.subnet.gateway %>
+      nameservers:
+        addresses:
+        - 192.168.1.140
+        - 8.8.8.8
+        search: []
+  version: 2
+EOF
+
+# configure NTP
+sed -i -re 's/^#?NTP=/NTP=<%= host_param('ntp-server') %>/' /etc/systemd/timesyncd.conf
+
+# update APT cache
+apt-get update
+
+<%# snippet 'ansible_preseed_networking_template' %>
+<%# snippet 'efibootmgr_netboot' %>
+<%= snippet 'built' %>
