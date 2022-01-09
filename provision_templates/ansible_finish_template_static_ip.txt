@@ -40,20 +40,27 @@ ansible ALL=(ALL) NOPASSWD: ALL
 EOF
 chmod 440 /etc/sudoers.d/99_ubuntu_demo
 
-cat << EOF >> /etc/netplan/01-netcfg.yaml
-# This is the network config written by 'subiquity'
+real=`ip -o link | awk '/<%= @host.mac -%>/ {print $2;}' | sed s/:$//`
+
+cat << EOF > /etc/netplan/01-netcfg.yaml
 network:
+  version: 2
   ethernets:
-    enp0s3:
+    $real:
+<% if host_param('dhcp') == 'false' -%>
       addresses:
-      - <%= @host.ip %>/24
+          - <%= @host.ip %>/24
       gateway4: <%= @host.subnet.gateway %>
       nameservers:
         addresses:
-        - 192.168.1.140
-        - 8.8.8.8
+          - <%= host_param('primary-dns') %>
+          - 8.8.8.8
         search: []
-  version: 2
+      dhcp4: false
+<% else -%>
+      dhcp4: true
+<% end -%>
+
 EOF
 
 # configure NTP
@@ -62,6 +69,6 @@ sed -i -re 's/^#?NTP=/NTP=<%= host_param('ntp-server') %>/' /etc/systemd/timesyn
 # update APT cache
 apt-get update
 
-<%# snippet 'ansible_preseed_networking_template' %>
+#<%= snippet 'ansible_preseed_networking_template' %>
 <%# snippet 'efibootmgr_netboot' %>
 <%= snippet 'built' %>
